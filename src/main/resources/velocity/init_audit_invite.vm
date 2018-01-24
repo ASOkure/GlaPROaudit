@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <p>Dear ${auditRecord.centre.auditLeadName},</p>
+
+    <p>
+      We are inviting you to represent
+        ${auditRecord.centre.centreName} and participate in the BSPED National Growth Hormone audit: ${auditRecord.audit.name}
+    </p>
+
+    <p>
+      Please click on the link, or cut and paste it to your browser, then add your data.  Please note, that if you had no new GH starts during the last quarter, you will still need to log-on and click the done button </p>
+    <p>
+        ${replyUrl}</p>
+
+    <p>Many thanks for your participation</p>
+
+    <p>Kind regards,</p>
+    <p>UK GH Audit</p>
+  </body>
+</html>
+
+

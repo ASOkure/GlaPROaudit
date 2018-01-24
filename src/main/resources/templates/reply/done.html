@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="reply/layout">
+  <div layout:fragment="content">
+    <br/>
+    <h1>Thanks for participating the GH Audit. </h1>
+  
+    <p>
+      <a th:href="@{'/reply/{id}/download'(id=${auditRecord.auditRecordId})}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/save.gif}"/> Save Patients as CSV
+        </span>
+      </a>
+    </p>
+    <p>You may close the browser to end this auditing process. </p>
+  </div>
+</html>

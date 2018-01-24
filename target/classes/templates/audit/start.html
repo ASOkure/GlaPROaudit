@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <div layout:fragment="content">
+    <div>
+      <a th:href="@{/}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/back.gif}"/> Back
+        </span>
+      </a>
+    </div>
+    <br/>
+    <h1>Starting a new Audit</h1>
+    <p style="color:red;">Note: This process can take long time, please leave it running and do not close the browser window. </p>
+    <form action="#" th:action="@{/audit/send}" th:object="${audit}" method="post">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td><input type="text" th:field="*{name}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Note</th>
+            <td>
+              <textarea th:field="*{note}" class="form-control" placeholder="Free Text" th:inline="text"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-lg btn-default">Send to All Centres</button>
+    </form>
+  </div>
+</html>

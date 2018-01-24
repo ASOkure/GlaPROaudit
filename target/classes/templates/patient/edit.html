@@ -1,0 +1,324 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<div layout:fragment="content">
+	<div>
+		<a th:href="@{/patient/}" class="btn btn-default"> <span> <img
+				th:src="@{/images/icons/back.gif}" /> Back
+		</span>
+		</a>
+	</div>
+	<br />
+	<div th:if="${message}" class="alert alert-${css} alert-dismissible"
+		role="alert">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">X</span>
+		</button>
+		<strong><span th:text="${message}" /></strong>
+	</div>
+	<div th:if="${message}" class="alert alert-success" role="alert">
+		<p th:text="${message}">success message</p>
+	</div>
+	<form action="#" th:action="@{/patient/save}" th:object="${patient}"
+		method="post">
+		<input type="hidden" th:value="${patient.patientId}" name="patientId" />
+		<table class="table table-striped">
+			<tbody th:switch="${newFlag}">
+				<tr th:case="${null}">
+					<th>Patient ID</th>
+					<td><span th:text="${patient.patientId}" /></td>
+				</tr>
+				<tr>
+					<th>Postcode (1st part of postcode)</th>
+					<td><input type="text" th:field="*{postcode}"
+						class="form-control" placeholder="1st part of postcode, i.e. BS34" />
+						<span th:if="${#fields.hasErrors('postcode')}"
+						th:errors="*{postcode}" th:errorclass="form-field-error">Postcode
+							Error</span></td>
+				</tr>
+			<!--  	<tr>
+					<th>Diagnostic Category</th>
+					<td><select th:field="*{diagnosticCategory}"
+						class="form-control">
+							<option value="">---- Select ----</option>
+							<optgroup>
+								<option value="1. Growth Hormoone Deficiency">1. Growth
+									Hormone Deficiency</option>
+								<option value="2. Turner syndrome">2. Turner syndrome</option>
+								<option value="3. Prader-Willi syndrome">3.
+									Prader-Willi syndrome</option>
+								<option value="4. Chronic renal insufficiency">4.
+									Chronic renal insufficiency</option>
+								<option
+									value="5. Born Small-for-gestational-age with subsequent growth failure at 4 yrs of age or later">5.
+									Born Small-for-gestational-age with subsequent growth failure
+									at 4 yrs of age or later</option>
+								<option
+									value="6. Short stature homeobox-containing gene (SHOX) deficiency">6.
+									Short stature homeobox-containing gene (SHOX) deficiency</option>
+								<option value="7. Other: PLEASE SPECIFY in Free Text">7.
+									Other: PLEASE SPECIFY in Free Text</option>
+							</optgroup>
+							<optgroup label="Unlicensed">
+								<option value="8. Short stature (idopathic or other)">8.
+									Short stature (idopathic or other)</option>
+								<option value="9. Noonan syndrome">9. Noonan syndrome</option>
+								<option value="10. Skeletal dysplasia">10. Skeletal
+									dysplasia</option>
+								<option value="11. Post transplant (bone marrow, renal, liver)">11.
+									Post transplant (bone marrow, renal, liver)</option>
+								<option value="12. Various other syndomes/genetic disorders">12.
+									Various other syndomes/genetic disorders</option>
+								<option value="13. Myopathy (congenital/other)">13.
+									Myopathy (congenital/other)</option>
+								<option value="14. Neutropenia (congenital)">14.
+									Neutropenia (congenital)</option>
+								<option value="15. Clinical trial of GH">15. Clinical
+									trial of GH</option>
+								<option value="16. Gonadal/ovarian function related">16.
+									Gonadal/ovarian function related</option>
+								<option value="17. Long term steroids">17. Long term
+									steroids</option>
+								<option value="18. Low GH/IGF1/ GH resistance but not deficient">18.
+									Low GH/IGF1/ GH resistance but not deficient</option>
+								<option value="19. Hypoglycaemia related">19.
+									Hypoglycaemia related</option>
+								<option value="20. Juvenile arthritis/SLE and short stature">20.
+									Juvenile arthritis/SLE and short stature</option>
+								<option value="21. Diagnosis unclear">21. Diagnosis
+									unclear</option>
+								<option
+									value="22. Hypothyroidism or other multiple hormone deficiencies">22.
+									Hypothyroidism or other multiple hormone deficiencies</option>
+								<option value="23. Metabolic disorders">23. Metabolic
+									disorders</option>
+								<option value="24. Cystic fibrosis">24. Cystic fibrosis</option>
+								<option value="25. Short bowel/bowel related">25. Short
+									bowel/bowel related</option>
+								<option value="26. Post brain tumor (cranial irradiation)">26.
+									Post brain tumor (cranial irradiation)</option>
+								<option value="27. Cancer related (no cranial irradiation)">27.
+									Cancer related (no cranial irradiation)</option>
+								<option value="28. Adult GHD">28. Adult GHD</option>
+							</optgroup>
+					</select> <span th:if="${#fields.hasErrors('diagnosticCategory')}"
+						th:errors="*{diagnosticCategory}" th:errorclass="form-field-error">Diagnostic
+							Category Error</span></td>
+				</tr> -->
+				
+				
+				<tr>
+					<th>Diagnostic Category</th>
+					<td><select th:field="*{diagnosticCategory}"
+						class="form-control">
+							<option value="">---- Select ----</option>
+							<optgroup>
+								 <option value="1. Growth Hormone Deficiency Isolated">1. Growth
+									Hormone Deficiency Isolated</option>
+									
+									<option value="2. Growth Hormone Deficiency multiple Hormone">2. Growth Hormone Deficiency Multiple Hormone</option>
+									
+					  			<option value="3. Turner syndrome">3. Turner syndrome</option>
+								<option value="4. Prader-Willi syndrome">4.
+									Prader-Willi syndrome</option>
+								<option value="5. Chronic renal insufficiency">5.
+									Chronic renal insufficiency</option>
+								<option
+									value="6. Born Small-for-gestational-age with subsequent growth failure at 4 yrs of age or later">6.
+									Born Small-for-gestational-age with subsequent growth failure
+									at 4 yrs of age or later</option>
+								<option
+									value="7. Short stature homeobox-containing gene (SHOX) deficiency">7.
+									Short stature homeobox-containing gene (SHOX) deficiency</option>
+								<option value="8. Other: PLEASE SPECIFY in Free Text">8.
+									Other: PLEASE SPECIFY in Free Text</option>
+							</optgroup>
+							<optgroup label="Unlicensed">
+								<option value="9. Short stature (idopathic or other)">9.
+									Short stature (idopathic or other)</option>
+								<option value="10. Noonan syndrome">10. Noonan syndrome</option>
+								<option value="11. Skeletal dysplasia">11. Skeletal
+									dysplasia</option>
+								<!--  <option value="11. Post transplant (bone marrow, renal, liver)">11.
+									Post transplant (bone marrow, renal, liver)</option> -->
+								<option value="12. Various other syndomes/genetic disorders">12.
+									Various other syndomes/genetic disorders</option>
+								<option value="13. Myopathy (congenital/other)">13.
+									Myopathy (congenital/other)</option>
+								<option value="14. Neutropenia (congenital)">14.
+									Neutropenia (congenital)</option>
+								<!--  <option value="15. Clinical trial of GH">15. Clinical
+									trial of GH</option> -->
+									
+									<!-- Changed  <option value="16. Gonadal/ovarian function related">16.
+									Gonadal/ovarian function related</option> -->
+								  <option value="15. precocious puberty">15.
+								precocious puberty</option> 
+								<option value="16. Long term steroids">16. Long term
+									steroids</option>
+								<option value="17. Low GH/IGF1/ GH resistance but not deficient">17.
+									Low GH/IGF1/ GH resistance but not deficient</option>
+								<!--  <option value="19. Hypoglycaemia related">19.
+									Hypoglycaemia related</option> -->
+								<option value="18. Juvenile arthritis/SLE and short stature">18.
+									Juvenile arthritis/SLE and short stature</option>
+								<option value="19. Diagnosis unclear">19. Diagnosis
+									unclear</option>
+								<!-- <option
+									value="22. Hypothyroidism or other multiple hormone deficiencies">22.
+									Hypothyroidism or other multiple hormone deficiencies</option> -->
+								<option value="20. Metabolic disorders">20. Metabolic
+									disorders</option>
+								<option value="21. Cystic fibrosis">21. Cystic fibrosis</option>
+								<option value="22. Short bowel/bowel related">22. Short
+									bowel/bowel related</option>
+								<!-- <option value="26. Post brain tumor (cranial irradiation)">26.
+									Post brain tumor (cranial irradiation)</option>  -->
+							<!--	<option value="27. Cancer related (no cranial irradiation)">27.
+									Cancer related (no cranial irradiation)</option> -->
+								<option value="23. Adult GHD">23. Transition/Adult GHD</option>
+							</optgroup>
+					</select> <span th:if="${#fields.hasErrors('diagnosticCategory')}"
+						th:errors="*{diagnosticCategory}" th:errorclass="form-field-error">Diagnostic
+							Category Error</span></td>
+				</tr>
+				
+				
+				
+				<tr>
+					<th>Sex</th>
+					<td><label class="radio-inline"><input type="radio"
+							th:field="*{sex}" value="M" />M</label> <label class="radio-inline"><input
+							type="radio" th:field="*{sex}" value="F" />F</label> <label
+						class="radio-inline"><input type="radio" th:field="*{sex}"
+							value="I" />I</label> <span th:if="${#fields.hasErrors('sex')}"
+						th:errors="*{sex}" th:errorclass="form-field-error">Sex
+							Error</span></td>
+				</tr>
+				<tr>
+					<th>Year of Birth</th>
+					<td><input type="text" th:field="*{birthYear}"
+						class="form-control" placeholder="Birth year" /> <span
+						th:if="${#fields.hasErrors('birthYear')}" th:errors="*{birthYear}"
+						th:errorclass="form-field-error">Year Of Birth Error</span></td>
+				</tr>
+				<tr>
+					<th>Month of Birth</th>
+					<td><select th:field="*{birthMonth}" class="form-control">
+							<option value="">---- Select ----</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+					</select> <span th:if="${#fields.hasErrors('birthMonth')}"
+						th:errors="*{birthMonth}" th:errorclass="form-field-error">Month
+							Of Birth Error</span></td>
+				</tr>
+				<tr>
+					<th>GH Start Year</th>
+					<td><input type="text" th:field="*{ghStartYear}"
+						class="form-control" placeholder="GH start year" /> <span
+						th:if="${#fields.hasErrors('ghStartYear')}"
+						th:errors="*{ghStartYear}" th:errorclass="form-field-error">GH
+							Start Year Error</span></td>
+				</tr>
+				<tr>
+					<th>GH Start Month</th>
+					<td><select th:field="*{ghStartMonth}" class="form-control">
+							<option value="">---- Select ----</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+					</select> <span th:if="${#fields.hasErrors('ghStartMonth')}"
+						th:errors="*{ghStartMonth}" th:errorclass="form-field-error">GH
+							Start Month Error</span></td>
+				</tr>
+				<tr>
+					<th>Dose (mg/day)</th>
+					<td><input type="text" th:field="*{dose}" class="form-control"
+						placeholder="Dose in mg/day" /> <span
+						th:if="${#fields.hasErrors('dose')}" th:errors="*{dose}"
+						th:errorclass="form-field-error">Dose Error</span></td>
+				</tr>
+				<tr>
+					<th>Weight at GH Start (kg)</th>
+					<td><input type="text" th:field="*{weight}"
+						class="form-control" placeholder="Weight in kg" /> <span
+						th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"
+						th:errorclass="form-field-error">Weight Error</span></td>
+				</tr>
+				<tr>
+					<th>Age at GH Start</th>
+					<td><input type="text" th:field="*{age}" class="form-control"
+						placeholder="Age as decimal in years" /> <!--   <input type="text" th:field="*{height}" class="form-control" placeholder="Height in cm"/> -->
+						<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"
+						th:errorclass="form-field-error">Age Error</span> <!-- <span th:if="${#fields.hasErrors('height')}" th:errors="*{height}" th:errorclass="form-field-error">Height Error</span> -->
+					</td>
+				</tr>
+				<tr>
+					<th>Injections Per Week</th>
+					<td><select th:field="*{injectionsPerWeek}"
+						class="form-control">
+							<option value="">---- Select ----</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+					</select> <span th:if="${#fields.hasErrors('injectionsPerWeek')}"
+						th:errors="*{injectionsPerWeek}" th:errorclass="form-field-error">Injections
+							Per Week Error</span></td>
+				</tr>
+				<tr>
+					<th>Ongoing Prescription</th>
+					<td><label class="radio-inline"><input type="radio"
+							th:field="*{ongoingPrescription}" value="GP" />GP</label> <label
+						class="radio-inline"><input type="radio"
+							th:field="*{ongoingPrescription}" value="Hospital" />Hospital</label> <span
+						th:if="${#fields.hasErrors('ongoingPrescription')}"
+						th:errors="*{ongoingPrescription}"
+						th:errorclass="form-field-error">Ongoing Error</span></td>
+				</tr>
+				<tr>
+					<th>GH Preparation</th>
+					<td><select th:field="*{ghPreparation}" class="form-control">
+							<option value="">---- Select ----</option>
+							<option value="Genotropin">Genotropin</option>
+							<option value="Humatrope">Humatrope</option>
+							<option value="Norditropin">Norditropin</option>
+							<option value="Nutropin">Nutropin</option>
+							<option value="Omnitrope">Omnitrope</option>
+							<option value="Saizen">Saizen</option>
+							<option value="Zomacton">Zomacton</option>
+					</select> <span th:if="${#fields.hasErrors('ghPreparation')}"
+						th:errors="*{ghPreparation}" th:errorclass="form-field-error">GH
+							Preparation Error</span></td>
+				</tr>
+				<tr>
+					<th>Free Text</th>
+					<td><textarea th:field="*{freeText}" class="form-control"
+							placeholder="Free Text" th:inline="text" /> <span
+						th:if="${#fields.hasErrors('freeText')}" th:errors="*{freeText}"
+						th:errorclass="form-field-error">Note Error</span></td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="submit" class="btn btn-lg btn-default">Save</button>
+	</form>
+</div>
+</html>

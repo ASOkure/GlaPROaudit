@@ -1,0 +1,12 @@
+Dear <USER_FULL_NAME>,
+
+We are inviting you to represent <HOSPITAL_NAME> to participate the UK growth hormone audit: <AUDIT_NAME>.
+
+Could you please click on the link below to enter the required patient details?
+
+<AUDIT_URL>
+
+Thanks very much.
+
+Kind regards,
+UK GH Audit

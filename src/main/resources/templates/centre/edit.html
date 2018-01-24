@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <div layout:fragment="content">
+    <div>
+      <a th:href="@{/centre/}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/back.gif}"/> Back
+        </span>
+      </a>
+    </div>
+    <br/>
+    <form action="#" th:action="@{/centre/save}" th:object="${centre}" method="post">
+      <input type="hidden" th:value="${centre.centreId}" name="centreId"/>
+      <table class="table table-striped">
+        <tbody th:switch="${newFlag}">
+          <tr th:case="${null}">
+            <th>Centre ID</th>
+            <td><span th:text="${centre.centreId}"/></td>
+          </tr>
+          <tr>
+            <th>Centre Name</th>
+            <td><input type="text" th:field="*{centreName}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>City</th>
+            <td><input type="text" th:field="*{city}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td><input type="text" th:field="*{region}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>County</th>
+            <td><input type="text" th:field="*{country}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Centre Lead Name</th>
+            <td><input type="text" th:field="*{centreLeadName}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Centre Lead Email</th>
+            <td><input type="text" th:field="*{centreLeadEmail}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Audit Lead Name</th>
+            <td><input type="text" th:field="*{auditLeadName}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Audit Lead Email</th>
+            <td><input type="text" th:field="*{auditLeadEmail}" class="form-control"/></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-lg btn-default">Save</button>
+    </form>
+  </div>
+</html>

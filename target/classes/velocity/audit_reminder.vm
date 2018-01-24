@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <p>Dear ${auditRecord.centre.auditLeadName} and ${auditRecord.centre.centreLeadName},</p>
+
+    <p>
+      Following the previously sent invite, this e-mail kindly reminds you to submit your BSPED GH Audit data.  </p>
+
+    <p>
+      You are invited to represent
+        ${auditRecord.centre.centreName} and participate in the BSPED National Growth Hormone audit: ${auditRecord.audit.name}
+    </p>
+
+    <p>
+      Could you please click on the link below to enter the required patient details? </p>
+    <p>
+        ${replyUrl}</p>
+
+    <p>Thanks very much.</p>
+
+    <p>Kind regards,</p>
+    <p>UK GH Audit</p>
+  </body>
+</html>
+
+
+

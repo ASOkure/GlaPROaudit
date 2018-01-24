@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<br />
+<br />
+<div layout:fragment="content">
+	<h1>Patients</h1>
+	<div th:if="${message}" class="alert alert-success" role="alert">
+		<p th:text="${message}">success message</p>
+	</div>
+	<br />
+	<div>
+		<a th:href="@{'/patient/download'}" class="btn btn-default"> <span>
+				<img th:src="@{/images/icons/save.gif}" /> Save Patients as CSV
+		</span>
+		</a>
+	</div>
+	<br />
+	<table class="table table-striped dataTable display">
+		<thead>
+			<th>Id</th>
+			<th>Hospital</th>
+			<th>Postcode</th>
+			<th>Diagnostic Category</th>
+			<th>Sex</th>
+			<th>Birth</th>
+			<th>GH Start</th>
+			<th>Dose (mg/day)</th>
+			<th>Weight (kg)</th>
+			<th>Age(as decimal in years)</th>
+			<!--  <th>Height (cm)</th> -->
+			<th>Injection Per Week</th>
+			<th>Ongoing Prescription</th>
+			<th>GH Preparation</th>
+			<th>Note</th>
+			<th>Record Date</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			<tr data-th-each="patient : ${patients}">
+				<td data-th-text="${patient.patientId}"></td>
+				<td
+					data-th-text="${patient.auditRecord} != null ? ${patient.auditRecord.centre.centreName}"></td>
+				<td data-th-text="${patient.postcode}"></td>
+				<td data-th-text="${patient.diagnosticCategory}"></td>
+				<td data-th-text="${patient.sex}"></td>
+				<td
+					data-th-text="${patient.birthYear} + '/' + ${patient.birthMonth}"></td>
+				<td
+					data-th-text="${patient.ghStartYear} + '/' + ${patient.ghStartMonth}"></td>
+				<td data-th-text="${patient.dose}"></td>
+				<td data-th-text="${patient.weight}"></td>
+				<td data-th-text="${patient.age}"></td>
+				<!--  <td data-th-text="${patient.height}"></td> -->
+				<td data-th-text="${patient.injectionsPerWeek}"></td>
+				<td data-th-text="${patient.ongoingPrescription}"></td>
+				<td data-th-text="${patient.ghPreparation}"></td>
+				<td data-th-text="${patient.freeText}"></td>
+				<td
+					data-th-text="${patient.recordDate} != null ? ${#calendars.format(patient.recordDate, 'yyyy-MM-dd HH:MM:SS ')} : ''"></td>
+				<td nowrap="nowrap"><a title="View"
+					th:href="@{'/patient/{id}'(id=${patient.patientId})}"><img
+						th:src="@{/images/icons/view.gif}" /></a> <a title="Edit"
+					th:href="@{'/patient/{id}/edit'(id=${patient.patientId})}"><img
+						th:src="@{/images/icons/edit.gif}" /></a> <a title="Delete"
+					th:href="@{'/patient/{id}/delete'(id=${patient.patientId})}"><img
+						th:src="@{/images/icons/delete.gif}" /></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</html>

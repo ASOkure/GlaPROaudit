@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <br/><br/>
+  <div layout:fragment="content">
+    <h1>Growth Hormone Audit Portal</h1>
+    
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Centre Management</h3>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{/centre/}">Centres</a>
+          </div>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">User Management</h3>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{/user/}">Users</a>
+          </div>
+        </div>
+      </div><!-- /.col-sm-4 -->
+      <div class="col-sm-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Audit Management</h3>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{/audit/}">Audits</a>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Start a new Audit</h3>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{/audit/start}">Start A New Audit</a>
+          </div>
+        </div>
+      </div><!-- /.col-sm-4 -->
+      <div class="col-sm-4">
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">Audit Progress Management</h3>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{/auditRecord/}">Audit Records</a>
+          </div>
+        </div>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h3 class="panel-title">Patient Management</h3>
+          </div>
+          <div class="panel-body">
+            <a th:href="@{/patient/}">Patients</a>
+          </div>
+        </div>
+      </div><!-- /.col-sm-4 -->
+    </div>
+  </div>
+</html>

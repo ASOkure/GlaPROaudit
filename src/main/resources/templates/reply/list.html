@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="reply/layout">
+  <br/><br/>
+  <div layout:fragment="content">
+    <h1><span th:text="${auditRecord.centre.centreName}"/> GH Audit </h1>
+    <p>Note: Please click on Done button at the bottom of this page if there is no new patient starting</p>
+    <div th:if="${message}" class="alert alert-success" role="alert">
+      <p th:text="${message}">success message</p>
+    </div>
+    <div>
+      <a th:href="@{'/reply/{id}/new'(id=${auditRecord.auditRecordId})}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/new.gif}"/> Create
+        </span>
+      </a>
+    </div>
+    <br/>
+    <table class="table table-striped dataTable display">
+      <thead>
+        <th>Id</th>
+        <th>Postcode</th>
+        <th>Diagnostic Category</th>
+        <th>Sex</th>
+        <th>Birth</th>
+        <th>GH Start</th>
+        <th>Dose (mg/day)</th>
+        <th>Weight (kg)</th>
+        <th>Age (in decimal)</th>
+        <th>Injection Per Week</th>
+        <th>Ongoing Prescription</th>
+        <th>GH Preparation</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr data-th-each="patient : ${auditRecord.patients}">
+          <td data-th-text="${patient.patientId}"></td>
+          <td data-th-text="${patient.postcode}"></td>
+          <td data-th-text="${patient.diagnosticCategory}"></td>
+          <td data-th-text="${patient.sex}"></td>
+          <td data-th-text="${patient.birthYear} + '/' + ${patient.birthMonth}"></td>
+          <td data-th-text="${patient.ghStartYear} + '/' + ${patient.ghStartMonth}"></td>
+          <td data-th-text="${patient.dose}"></td>
+          <td data-th-text="${patient.weight}"></td>
+          <td data-th-text="${patient.age}"></td>
+          <td data-th-text="${patient.injectionsPerWeek}"></td>
+          <td data-th-text="${patient.ongoingPrescription}"></td>
+          <td data-th-text="${patient.ghPreparation}"></td>
+          <td nowrap="nowrap">
+            <a title="View" th:href="@{'/reply/patient/{id}'(id=${patient.patientId})}"><img th:src="@{/images/icons/view.gif}"/></a>
+            <a title="Edit" th:href="@{'/reply/patient/{id}/edit'(id=${patient.patientId})}"><img th:src="@{/images/icons/edit.gif}"/></a>
+            <a title="Delete" th:href="@{'/reply/patient/{id}/delete'(id=${patient.patientId})}"><img th:src="@{/images/icons/delete.gif}"/></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a th:href="@{'/reply/{id}/done'(id=${auditRecord.auditRecordId})}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/save.gif}"/> Done
+        </span>
+      </a>
+    </div>
+  </div>
+</html>

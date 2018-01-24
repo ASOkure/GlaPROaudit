@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <div layout:fragment="content">
+    <div>
+      <a th:href="@{/centre/}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/back.gif}"/> Back
+        </span>
+      </a>
+    </div>
+    <br/>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Centre Id</th>
+          <td><span th:text="${centre.centreId}"/></td>
+        </tr>
+        <tr>
+          <th>Centre Name</th>
+          <td><span th:text="${centre.centreName}"/></td>
+        </tr>
+        <tr>
+          <th>City</th>
+          <td><span th:text="${centre.city}"/></td>
+        </tr>
+        <tr>
+          <th>Region</th>
+          <td><span th:text="${centre.region}"/></td>
+        </tr>
+        <tr>
+          <th>County</th>
+          <td><span th:text="${centre.country}"/></td>
+        </tr>
+        <tr>
+          <th>Centre Lead Name</th>
+          <td><span th:text="${centre.centreLeadName}"/></td>
+        </tr>
+        <tr>
+          <th>Centre Lead Email</th>
+          <td><span th:text="${centre.centreLeadEmail}"/></td>
+        </tr>
+        <tr>
+          <th>Audit Lead Name</th>
+          <td><span th:text="${centre.auditLeadName}"/></td>
+        </tr>
+        <tr>
+          <th>Audit Lead Email</th>
+          <td><span th:text="${centre.auditLeadEmail}"/></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</html>

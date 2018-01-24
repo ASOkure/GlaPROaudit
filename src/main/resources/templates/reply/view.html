@@ -1,0 +1,92 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="reply/layout">
+<div layout:fragment="content">
+	<div>
+		<a th:href="@{'/reply/{id}'(id=${patient.auditRecord.auditRecordId})}"
+			class="btn btn-default"> <span> <img
+				th:src="@{/images/icons/back.gif}" /> Back
+		</span>
+		</a>
+	</div>
+	<br />
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th>Patient Id</th>
+				<td><span th:text="${patient.patientId}" /></td>
+			</tr>
+			<tr>
+				<th>Postcode</th>
+				<td><span th:text="${patient.postcode}" /></td>
+			</tr>
+			<tr>
+				<th>Diagnostic Category</th>
+				<td><span th:text="${patient.diagnosticCategory}" /></td>
+			</tr>
+			<tr>
+				<th>Sex</th>
+				<td><span th:text="${patient.sex}" /></td>
+			</tr>
+			<tr>
+				<th>Year of Birth</th>
+				<td><span th:text="${patient.birthYear}" /></td>
+			</tr>
+			<tr>
+				<th>Month of Birth</th>
+				<td><span th:text="${patient.birthMonth}" /></td>
+			</tr>
+			<tr>
+				<th>GH Start Year</th>
+				<td><span th:text="${patient.ghStartYear}" /></td>
+			</tr>
+			<tr>
+				<th>GH Start Month</th>
+				<td><span th:text="${patient.ghStartMonth}" /></td>
+			</tr>
+			<tr>
+				<th>Dose (mg/day)</th>
+				<td><span th:text="${patient.dose}" /></td>
+			</tr>
+			<tr>
+				<th>Weight (kg)</th>
+				<td><span th:text="${patient.weight}" /></td>
+			</tr>
+			
+			
+			
+			<tr>
+				<th>Age (as decimal in years)</th>
+				<td><span th:text="${patient.age}" /></td>
+			</tr>
+			
+			<!--  
+			<tr>
+				<th>Height (kg)</th>
+				<td><span th:text="${patient.height}" /></td>
+			</tr> -->
+			<tr>
+				<th>Injections Per Week</th>
+				<td><span th:text="${patient.injectionsPerWeek}" /></td>
+			</tr>
+			<tr>
+				<th>Ongoing Prescription</th>
+				<td><span th:text="${patient.ongoingPrescription}" /></td>
+			</tr>
+			<tr>
+				<th>GH Preparation</th>
+				<td><span th:text="${patient.ghPreparation}" /></td>
+			</tr>
+			<tr>
+				<th>Note</th>
+				<td><span th:text="${patient.freeText}" /></td>
+			</tr>
+			<tr>
+				<th>Record Date</th>
+				<td><span
+					th:text="${patient.recordDate} != null ? ${#calendars.format(patient.recordDate, 'yyyy-MM-dd HH:MM:SS ')} : ''" /></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</html>

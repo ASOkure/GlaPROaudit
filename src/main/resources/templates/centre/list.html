@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <br/><br/>
+  <div layout:fragment="content">
+    <h1>Centres</h1>
+    
+    <div th:if="${message}" class="alert alert-success" role="alert">
+      <p th:text="${message}">success message</p>
+    </div>
+    <div>
+      <a th:href="@{/centre/new}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/new.gif}"/> Create
+        </span>
+      </a>
+    </div>
+    <br/>
+    <table class="table table-striped dataTable display">
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>Country</th>
+        <th>Lead Name</th>
+        <th>Lead Email</th>
+        <th>Audit Lead Name</th>
+        <th>Audit Lead Email</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr data-th-each="centre : ${centres}">
+          <td data-th-text="${centre.centreId}"></td>
+          <td data-th-text="${centre.centreName}"></td>
+          <td data-th-text="${centre.city}"></td>
+          <td data-th-text="${centre.region}"></td>
+          <td data-th-text="${centre.country}"></td>
+          <td data-th-text="${centre.centreLeadName}"></td>
+          <td data-th-text="${centre.centreLeadEmail}"></td>
+          <td data-th-text="${centre.auditLeadName}"></td>
+          <td data-th-text="${centre.auditLeadEmail}"></td>
+          <td nowrap="nowrap">
+            <a title="View" th:href="@{'/centre/{id}'(id=${centre.centreId})}"><img th:src="@{/images/icons/view.gif}"/></a>
+            <a title="Edit" th:href="@{'/centre/{id}/edit'(id=${centre.centreId})}"><img th:src="@{/images/icons/edit.gif}"/></a>
+            <a title="Delete" th:href="@{'/centre/{id}/delete'(id=${centre.centreId})}"><img th:src="@{/images/icons/delete.gif}"/></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</html>

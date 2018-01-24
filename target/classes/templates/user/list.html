@@ -1,0 +1,54 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <br/><br/>
+  <div layout:fragment="content">
+    <h1>Users</h1>
+    
+    <div th:if="${message}" class="alert alert-success" role="alert">
+      <p th:text="${message}">success message</p>
+    </div>
+    <div>
+      <a th:href="@{/user/new}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/new.gif}"/> Create
+        </span>
+      </a>
+    </div>
+    <br/>
+    <table class="table table-striped dataTable display">
+      <thead>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Registration Date</th>
+        <th>Last Visit</th>
+        <th>Login Counter</th>
+        <th>Country</th>
+        <th>Centre</th>
+        <th>Tel</th>
+        <th>Enabled</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr data-th-each="user : ${users}">
+          <td data-th-text="${user.id}"></td>
+          <td data-th-text="${user.username}"></td>
+          <td data-th-text="${user.name}"></td>
+          <td data-th-text="${user.email}"></td>
+          <td data-th-text="${user.regDate} != null ? ${#calendars.format(user.regDate, 'yyyy-MM-dd HH:MM:SS ')} : ''"></td>
+          <td data-th-text="${user.lastVisit} != null ? ${#calendars.format(user.lastVisit, 'yyyy-MM-dd HH:MM:SS ')} : ''"></td>
+          <td data-th-text="${user.loginCounter}"></td>
+          <td data-th-text="${user.country}"></td>
+          <td data-th-text="${user.centre}"></td>
+          <td data-th-text="${user.tel}"></td>
+          <td data-th-text="${user.enabled}"></td>
+          <td nowrap="nowrap">
+            <a title="View" th:href="@{'/user/{id}'(id=${user.id})}"><img th:src="@{/images/icons/view.gif}"/></a>
+            <a title="Edit" th:href="@{'/user/{id}/edit'(id=${user.id})}"><img th:src="@{/images/icons/edit.gif}"/></a>
+            <a title="Delete" th:href="@{'/user/{id}/delete'(id=${user.id})}"><img th:src="@{/images/icons/delete.gif}"/></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</html>

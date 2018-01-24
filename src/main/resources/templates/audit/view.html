@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <div layout:fragment="content">
+    <div>
+      <a th:href="@{/audit/}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/back.gif}"/> Back
+        </span>
+      </a>
+    </div>
+    <br/>
+    <h1>Audit</h1>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Audit Id</th>
+          <td><span th:text="${audit.auditId}"/></td>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <td><span th:text="${audit.name}"/></td>
+        </tr>
+        <tr>
+          <th>Creator</th>
+          <td><span th:text="${audit.creator.name}"/></td>
+        </tr>
+        <tr>
+          <th>Region</th>
+          <td><span th:text="${audit.createTimestamp} != null ? ${#calendars.format(audit.createTimestamp, 'yyyy-MM-dd HH:MM:SS ')} : ''"/></td>
+        </tr>
+        <tr>
+          <th>County</th>
+          <td><span th:text="${audit.note}"/></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h1>Audit Record</h1>
+    <table class="table table-striped dataTable display">
+      <thead>
+        <th>Id</th>
+        <th>Status</th>
+        <th>Request Timestamp</th>
+        <th>Response Timestamp</th>
+        <th>Centre Name</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr data-th-each="auditRecord : ${audit.auditRecords}">
+          <td data-th-text="${auditRecord.auditRecordId}"></td>
+          <td data-th-text="${auditRecord.status}"></td>
+          <td data-th-text="${auditRecord.requestTimestamp} != null ? ${#calendars.format(auditRecord.requestTimestamp, 'yyyy-MM-dd HH:MM:SS ')} : ''"></td>
+          <td data-th-text="${auditRecord.responseTimestamp} != null ? ${#calendars.format(auditRecord.responseTimestamp, 'yyyy-MM-dd HH:MM:SS ')} : ''"></td>
+          <td data-th-text="${auditRecord.centre} != null ? ${auditRecord.centre.centreName}"></td>
+          <td nowrap="nowrap">
+            <a title="View" th:href="@{'/auditRecord/{id}'(id=${auditRecord.auditRecordId})}"><img th:src="@{/images/icons/view.gif}"/></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</html>

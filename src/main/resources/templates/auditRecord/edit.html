@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <div layout:fragment="content">
+    <div>
+      <a th:href="@{/auditRecord/}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/back.gif}"/> Back
+        </span>
+      </a>
+    </div>
+    <br/>
+    <form action="#" th:action="@{/auditRecord/save}" th:object="${auditRecord}" method="post">
+      <input type="hidden" th:value="${auditRecord.auditRecordId}" name="auditId"/>
+      <table class="table table-striped">
+        <tbody th:switch="${newFlag}">
+          <tr th:case="${null}">
+            <th>Audit Record ID</th>
+            <td><span th:text="${auditRecord.auditRecordId}"/></td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>
+              <select th:field="*{status}" class="form-control">
+                <option value="">---- Select ----</option>
+                <option value="PENDING">PENDING</option>
+                <option value="REQUESTED">REQUESTED</option>
+                <option value="RESPONDED">RESPONDED</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-lg btn-default">Save</button>
+    </form>
+  </div>
+</html>

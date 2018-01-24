@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <br/><br/>
+  <div layout:fragment="content">
+    <h1>Audit</h1>
+    
+    <div th:if="${message}" class="alert alert-success" role="alert">
+      <p th:text="${message}">success message</p>
+    </div>
+    <div>
+      <a th:href="@{/audit/new}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/new.gif}"/> Create
+        </span>
+      </a>
+    </div>
+    <br/>
+    <table class="table table-striped dataTable display">
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Creator</th>
+        <th>Timestamp</th>
+        <th>Note</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr data-th-each="audit : ${audits}">
+          <td data-th-text="${audit.auditId}"></td>
+          <td data-th-text="${audit.name}"></td>
+          <td data-th-text="${audit.creator} != null ? ${audit.creator.name}"></td>
+          <td data-th-text="${audit.createTimestamp} != null ? ${#calendars.format(audit.createTimestamp, 'yyyy-MM-dd HH:MM:SS ')} : ''"></td>
+          <td data-th-text="${audit.note}"></td>
+          <td nowrap="nowrap">
+            <a title="View" th:href="@{'/audit/{id}'(id=${audit.auditId})}"><img th:src="@{/images/icons/view.gif}"/></a>
+            <a title="Edit" th:href="@{'/audit/{id}/edit'(id=${audit.auditId})}"><img th:src="@{/images/icons/edit.gif}"/></a>
+            <a title="Delete" th:href="@{'/audit/{id}/delete'(id=${audit.auditId})}"><img th:src="@{/images/icons/delete.gif}"/></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</html>

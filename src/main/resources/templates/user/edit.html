@@ -1,0 +1,65 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+  <div layout:fragment="content">
+    <div>
+      <a th:href="@{/user/}" class="btn btn-default">
+        <span>
+          <img th:src="@{/images/icons/back.gif}"/> Back
+        </span>
+      </a>
+    </div>
+    <br/>
+    <form action="#" th:action="@{/user/save}" th:object="${user}" method="post">
+      <input type="hidden" th:value="${user.id}" name="id"/>
+      <table class="table table-striped">
+        <tbody th:switch="${newFlag}">
+          <tr th:case="${null}">
+            <th>Id</th>
+            <td><span th:text="${user.id}"/></td>
+          </tr>
+          <tr>
+            <th>Username</th>
+            <td><input type="text" th:field="*{username}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Password</th>
+            <td>
+              <input type="password" th:field="*{password}" class="form-control"/>
+              <span>(Keep empty if not changing password)</span>
+            </td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td><input type="text" th:field="*{name}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><input type="text" th:field="*{email}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <td><input type="text" th:field="*{country}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Centre</th>
+            <td><input type="text" th:field="*{centre}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Tel</th>
+            <td><input type="text" th:field="*{tel}" class="form-control"/></td>
+          </tr>
+          <tr>
+            <th>Enabled</th>
+            <td>
+              <select th:field="*{enabled}" class="form-control">
+                <option value="">---- Select ----</option>
+                <option value="1">True</option>
+                <option value="0">False</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-lg btn-default">Save</button>
+    </form>
+  </div>
+</html>
